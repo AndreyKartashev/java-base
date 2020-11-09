@@ -54,7 +54,7 @@ public class PersonalBook {
     }
 
     public static void main(String[] args) {
-        System.out.println("\n Программа \"Учет сотрудников.\"\n");
+        System.out.println("\nПрограмма \"Учет сотрудников\".\n");
         PersonalBook initBook = new PersonalBook();
     }
 }
