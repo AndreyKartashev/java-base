@@ -9,7 +9,7 @@
 
     Метод humanRows возвращает параметры:
            количество иксов в ряд: maxRow,
-           координаты x и y начала и конца: (x1, y1), (x2, y2),
+           координаты x и y начала и конца максимального ряда: (x1, y1), (x2, y2),
            признак какой ряд 1:4.
     Далее - вычисляются кооридинаты (x и y) хода компьютера searchPoint (x, y).
         Или близко к началу ряда или к концу ряда - на выбор (считая слева).
@@ -23,34 +23,34 @@ public class GameAI {
         int x1 = 0, x2 = 0, y1 = 0, y2 = 0;
         int max = 0;
         if (TestAI.horisontal(symb, x1, y1, x2, y2))
-            if (max < Main.maxAmount)
-                max = Main.maxAmount;
+            if (max < MainApp.maxAmount)
+                max = MainApp.maxAmount;
         if (TestAI.vertical(symb, x1, y1, x2, y2))
-            if (max < Main.maxAmount)
-                max = Main.maxAmount;
+            if (max < MainApp.maxAmount)
+                max = MainApp.maxAmount;
         if (TestAI.leftDiagonal(symb, x1, y1, x2, y2))
-            if (max < Main.maxAmount)
-                max = Main.maxAmount;
+            if (max < MainApp.maxAmount)
+                max = MainApp.maxAmount;
         if (TestAI.rightDiagonal(symb, x1, y1, x2, y2))
-            if (max < Main.maxAmount)
-                max = Main.maxAmount;
+            if (max < MainApp.maxAmount)
+                max = MainApp.maxAmount;
         if (TestAI.leftUpDiagonals(symb, x1, y1, x2, y2))
-            if (max < Main.maxAmount)
-                max = Main.maxAmount;
+            if (max < MainApp.maxAmount)
+                max = MainApp.maxAmount;
         if (TestAI.leftDownDiagonals(symb, x1, y1, x2, y2))
-            if (max < Main.maxAmount)
-                max = Main.maxAmount;
+            if (max < MainApp.maxAmount)
+                max = MainApp.maxAmount;
         if (TestAI.rightUpDiagonals(symb, x1, y1, x2, y2))
-            if (max < Main.maxAmount)
-                max = Main.maxAmount;
+            if (max < MainApp.maxAmount)
+                max = MainApp.maxAmount;
         if (TestAI.rightDownDiagonals(symb, x1, y1, x2, y2))
-            if (max < Main.maxAmount)
-                max = Main.maxAmount;
-        Main.maxAmount = max;
+            if (max < MainApp.maxAmount)
+                max = MainApp.maxAmount;
+        MainApp.maxAmount = max;
 
         // Собственно - точка куда ставить
-        Point.searchPoint(x1,y1,x2,y2,1);
-        if (!Main.isCellValid(Main.pointX, Main.pointY))
-            Point.searchPoint(x1,y1,x2,y2,2);
+        Point.searchPoint(x1,y1,x2,y2,1); //reg = 1 - слева или сверху,
+        if (!MainApp.isCellValid(MainApp.pointX, MainApp.pointY))
+            Point.searchPoint(x1,y1,x2,y2,2); //reg = 2 - справа или снизу.
     }
 }
