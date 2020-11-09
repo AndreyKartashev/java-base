@@ -13,7 +13,7 @@ package ru.geekbrains.Lesson4;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Main {
+public class MainApp {
     public static int SIZE;
     public static int DOTS_TO_WIN;
     public static final char DOT_EMPTY = '•';
@@ -112,10 +112,12 @@ public class Main {
          // Из GameAI.class
 
 // Заглушка вместо 4 - го задания. Немного не отладил, надоело :-).
-            pointX = rand.nextInt(SIZE);
-            pointY = rand.nextInt(SIZE);
-            //   GameAI.humanRows(DOT_X);
-            //   System.out.println("Max amount X = " + maxAmount);
+            GameAI.humanRows(DOT_X);
+            System.out.println("Max amount X = " + maxAmount);
+            if (!isCellValid(pointX, pointY)) {
+                pointX = rand.nextInt(SIZE);
+                pointY = rand.nextInt(SIZE);
+            }
         } while (!isCellValid(pointX, pointY));
 
         System.out.println("Компьютер походил в точку " + (pointX + 1) + " " + (pointY + 1));

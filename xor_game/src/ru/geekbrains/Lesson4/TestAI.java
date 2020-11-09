@@ -5,15 +5,15 @@ public class TestAI {
     // 1 - По строкам
     public static boolean horisontal(char symb, int x1, int y1, int x2, int y2) {
         int amount = 0, i = 0, j;
-        while (i < Main.SIZE) {
+        while (i < MainApp.SIZE) {
             amount = 0;
             j = 0;
-            while (j < Main.SIZE) {
-                if (Main.map[i][j] == symb) {
+            while (j < MainApp.SIZE) {
+                if (MainApp.map[i][j] == symb) {
                     amount += 1;
-                    if (amount > Main.maxAmount) {
-                        Main.maxAmount = amount;
-                        Main.signRow = 1;
+                    if (amount > MainApp.maxAmount) {
+                        MainApp.maxAmount = amount;
+                        MainApp.signRow = 1;
                         if (amount == 1) {
                             x1 = x2 = i;
                             y1 = y2 = j;
@@ -33,15 +33,15 @@ public class TestAI {
     // 2 - По столбцам
     public static boolean vertical(char symb, int x1, int y1, int x2, int y2) {
         int amount = 0, i, j = 0;
-        while (j < Main.SIZE) {
+        while (j < MainApp.SIZE) {
             amount = 0;
             i = 0;
-            while (i < Main.SIZE) {
-                if (Main.map[i][j] == symb) {
+            while (i < MainApp.SIZE) {
+                if (MainApp.map[i][j] == symb) {
                     amount = amount + 1;
-                    if (amount > Main.maxAmount) {
-                        Main.maxAmount = amount;
-                        Main.signRow = 2;
+                    if (amount > MainApp.maxAmount) {
+                        MainApp.maxAmount = amount;
+                        MainApp.signRow = 2;
                         if (amount == 1) {
                             x1 = x2 = i;
                             y1 = y2 = j;
@@ -62,13 +62,13 @@ public class TestAI {
     // 3 - Главная диагональ
     public static boolean leftDiagonal(char symb, int x1, int y1, int x2, int y2) {
         int amount = 0, i = 0;
-        while (i < Main.SIZE) {
+        while (i < MainApp.SIZE) {
             // если Main.DOTS_TO_WIN в ряд по главной диагонали
-            if (Main.map[i][i] == symb) {
+            if (MainApp.map[i][i] == symb) {
                 amount = amount + 1;
-                if (amount > Main.maxAmount) {
-                    Main.maxAmount = amount;
-                    Main.signRow = 3;
+                if (amount > MainApp.maxAmount) {
+                    MainApp.maxAmount = amount;
+                    MainApp.signRow = 3;
                     if (amount == 1)
                         x1 = x2 = y1 = y2 = i;
                     else
@@ -84,18 +84,18 @@ public class TestAI {
     // 4 - Побочная диагональ
     public static boolean rightDiagonal(char symb, int x1, int y1, int x2, int y2) {
         int amount = 0, i = 0;
-        while (i < Main.SIZE) {
+        while (i < MainApp.SIZE) {
             // если Main.DOTS_TO_WIN в ряд по главной диагонали
-            if (Main.map[Main.SIZE - i - 1][i] == symb) {
+            if (MainApp.map[MainApp.SIZE - i - 1][i] == symb) {
                 amount = amount + 1;
-                if (amount > Main.maxAmount) {
-                    Main.maxAmount = amount;
-                    Main.signRow = 4;
+                if (amount > MainApp.maxAmount) {
+                    MainApp.maxAmount = amount;
+                    MainApp.signRow = 4;
                     if (amount == 1) {
-                        x1 = x2 = Main.SIZE - i - 1;
+                        x1 = x2 = MainApp.SIZE - i - 1;
                         y1 = y2 = i;
                     } else {
-                        x2 = Main.SIZE - i - 1;
+                        x2 = MainApp.SIZE - i - 1;
                         y2 = i;
                     }
                     return true;
@@ -109,15 +109,15 @@ public class TestAI {
     //5   Диагонали вверх от главной диагонали ("верх-лево -- низ-право")
     public static boolean leftUpDiagonals(char symb, int x1, int y1, int x2, int y2) {
         int amount = 0;
-        for (int j = 1; j < Main.SIZE; j++) {
+        for (int j = 1; j < MainApp.SIZE; j++) {
             // перебор по "диагоналям"
-            for (int i = 0; i < Main.SIZE - j; i++) {
+            for (int i = 0; i < MainApp.SIZE - j; i++) {
                 //идем вдоль двух симметричных "диагоналей"
-                if (Main.map[i][j + i] == symb) {
+                if (MainApp.map[i][j + i] == symb) {
                     amount = amount + 1;
-                    if (amount > Main.maxAmount) {
-                        Main.maxAmount = amount;
-                        Main.signRow = 3;
+                    if (amount > MainApp.maxAmount) {
+                        MainApp.maxAmount = amount;
+                        MainApp.signRow = 3;
                         if (amount == 1) {
                             x1 = x2 = i;
                             y1 = y2 = j + 1;
@@ -136,13 +136,13 @@ public class TestAI {
     // 6  Диагонали вниз от главной диагонали ("верх-лево -- низ-право")
     public static boolean leftDownDiagonals(char symb, int x1, int y1, int x2, int y2) {
         int amount = 0;
-        for (int j = 1; j < Main.SIZE; j++) {
-            for (int i = 0; i < Main.SIZE - j; i++) {
-                if (Main.map[j + i][i] == symb) {
+        for (int j = 1; j < MainApp.SIZE; j++) {
+            for (int i = 0; i < MainApp.SIZE - j; i++) {
+                if (MainApp.map[j + i][i] == symb) {
                     amount = amount + 1;
-                    if (amount > Main.maxAmount) {
-                        Main.maxAmount = amount;
-                        Main.signRow = 3;
+                    if (amount > MainApp.maxAmount) {
+                        MainApp.maxAmount = amount;
+                        MainApp.signRow = 3;
                         if (amount == 1) {
                             x1 = x2 = j + i;
                             y1 = y2 = i;
@@ -161,19 +161,19 @@ public class TestAI {
     // 7  Диагонали  вверх от побочной диагонали ("верх-право -- низ-лево")
     public static boolean rightUpDiagonals(char symb, int x1, int y1, int x2, int y2) {
         int amount = 0;
-        for (int j = 1; j < Main.SIZE; j++) {
-            for (int i = 0; i < Main.SIZE - j; i++) {
-                if (Main.map[i][Main.SIZE - i - j - 1] == symb) {
+        for (int j = 1; j < MainApp.SIZE; j++) {
+            for (int i = 0; i < MainApp.SIZE - j; i++) {
+                if (MainApp.map[i][MainApp.SIZE - i - j - 1] == symb) {
                     amount = amount + 1;
-                    if (amount > Main.maxAmount) {
-                        Main.maxAmount = amount;
-                        Main.signRow = 4;
+                    if (amount > MainApp.maxAmount) {
+                        MainApp.maxAmount = amount;
+                        MainApp.signRow = 4;
                         if (amount == 1) {
                             x1 = x2 = i;
-                            y1 = y2 = Main.SIZE - j;
+                            y1 = y2 = MainApp.SIZE - j;
                         } else {
                             x2 = i;
-                            y2 = Main.SIZE - j;
+                            y2 = MainApp.SIZE - j;
                         }
                         return true;
                     }
@@ -185,19 +185,19 @@ public class TestAI {
     // 8  Диагонали  вниз от побочной диагонали ("верх-право -- низ-лево")
     public static boolean rightDownDiagonals(char symb, int x1, int y1, int x2, int y2) {
         int amount = 0;
-        for (int j = 1; j < Main.SIZE; j++) {
-            for (int i = 0; i < Main.SIZE - j; i++) {
-                if (Main.map[j + i][Main.SIZE - 1 - i] == symb) {
+        for (int j = 1; j < MainApp.SIZE; j++) {
+            for (int i = 0; i < MainApp.SIZE - j; i++) {
+                if (MainApp.map[j + i][MainApp.SIZE - 1 - i] == symb) {
                     amount = amount + 1;
-                    if (amount > Main.maxAmount) {
-                        Main.maxAmount = amount;
-                        Main.signRow = 4;
+                    if (amount > MainApp.maxAmount) {
+                        MainApp.maxAmount = amount;
+                        MainApp.signRow = 4;
                         if (amount == 1) {
                             x1 = x2 = j + i;
-                            y1 = y2 = Main.SIZE - 1 - i;
+                            y1 = y2 = MainApp.SIZE - 1 - i;
                         } else {
                             x2 = j + i;
-                            y2 = Main.SIZE - 1 - i;
+                            y2 = MainApp.SIZE - 1 - i;
                         }
                     }
                 }

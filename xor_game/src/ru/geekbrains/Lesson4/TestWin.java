@@ -5,18 +5,18 @@ public class TestWin {
     public static boolean testHorisontal(char symb) {
         int amount, i, j;
         i = 0;
-        while (i < Main.SIZE) {
+        while (i < MainApp.SIZE) {
             // если Main.DOTS_TO_WIN в ряд по горизонтальным рядам
             amount = 0;
             j = 0;
-            while (j < Main.SIZE) {
-                if (Main.map[i][j] == symb) {
+            while (j < MainApp.SIZE) {
+                if (MainApp.map[i][j] == symb) {
                     amount += 1;
-                    if (amount == Main.DOTS_TO_WIN) {
+                    if (amount == MainApp.DOTS_TO_WIN) {
                         return true;
                     }
                 }
-                if (Main.map[i][j] != symb) {
+                if (MainApp.map[i][j] != symb) {
                     if (amount > 0) {
                         return false;
                     }
@@ -31,18 +31,18 @@ public class TestWin {
     public static boolean testVertical(char symb) {
         int amount, i, j;
         j = 0;
-        while (j < Main.SIZE) {
+        while (j < MainApp.SIZE) {
             //ecли есть Main.DOTS_TO_WIN в ряд по вертикальным рядам
             amount = 0;
             i = 0;
-            while (i < Main.SIZE) {
-                if (Main.map[i][j] == symb) {
+            while (i < MainApp.SIZE) {
+                if (MainApp.map[i][j] == symb) {
                     amount += 1;
-                    if (amount == Main.DOTS_TO_WIN) {
+                    if (amount == MainApp.DOTS_TO_WIN) {
                         return true;
                     }
                 }
-                if (Main.map[i][j] != symb) {
+                if (MainApp.map[i][j] != symb) {
                     if (amount > 0) {
                         return false;
                     }
@@ -56,15 +56,15 @@ public class TestWin {
     // 3   Главная диагональ
     public static boolean testMainLeftDiagonal(char symb) {
         int amount = 0, i = 0;
-        while (i < Main.SIZE) {
+        while (i < MainApp.SIZE) {
             // если Main.DOTS_TO_WIN в ряд по главной диагонали
-            if (Main.map[i][i] == symb) {
+            if (MainApp.map[i][i] == symb) {
                 amount += 1;
-                if (amount == Main.DOTS_TO_WIN) {
+                if (amount == MainApp.DOTS_TO_WIN) {
                     return true;
                 }
             }
-            if (Main.map[i][i] != symb) {
+            if (MainApp.map[i][i] != symb) {
                 if (amount > 0) {
                     return false;
                 }
@@ -76,15 +76,15 @@ public class TestWin {
     // 4   Побочная диагональ
     public static boolean testMainRightDiagonal(char symb) {
         int amount = 0, i = 0;
-        while (i < Main.SIZE) {
+        while (i < MainApp.SIZE) {
             // если Main.DOTS_TO_WIN в ряд по побочной диагонали
-            if (Main.map[Main.SIZE - i - 1][i] == symb) {
+            if (MainApp.map[MainApp.SIZE - i - 1][i] == symb) {
                 amount += 1;
-                if (amount == Main.DOTS_TO_WIN) {
+                if (amount == MainApp.DOTS_TO_WIN) {
                     return true;
                 }
             }
-            if (Main.map[Main.SIZE - i - 1][i] != symb) {
+            if (MainApp.map[MainApp.SIZE - i - 1][i] != symb) {
                 if (amount > 0) {
                     return false;
                 }
@@ -96,17 +96,17 @@ public class TestWin {
     // 5   a[i,j+i]...  Диагонали вверх от диагонали "верх-лево -- низ-право"
     public static boolean testLeftUpDiagonals(char symb) {
         int amount = 0;
-        for (int j = 1; j < Main.SIZE; j++) {
+        for (int j = 1; j < MainApp.SIZE; j++) {
             // перебор по "диагоналям"
-            for (int i = 0; i < Main.SIZE - j; i++) {
+            for (int i = 0; i < MainApp.SIZE - j; i++) {
                 //идем вдоль двух симметричных "диагоналей"
-                if (Main.map[i][j + i] == symb) {
+                if (MainApp.map[i][j + i] == symb) {
                     amount += 1;
-                    if (amount == Main.DOTS_TO_WIN) {
+                    if (amount == MainApp.DOTS_TO_WIN) {
                         return true;
                     }
                 }
-                if (Main.map[i][j + i] != symb) {
+                if (MainApp.map[i][j + i] != symb) {
                     if (amount > 0) {
                         return false;
                     }
@@ -118,15 +118,15 @@ public class TestWin {
     // 6   a[j+i,i]...  Диагонали вниз от диагонали "верх-лево -- низ-право"
     public static boolean testLeftDownDiagonals(char symb) {
         int amount = 0;
-        for (int j = 1; j < Main.SIZE; j++) {
-            for (int i = 0; i < Main.SIZE - j; i++) {
-                if (Main.map[j + i][i] == symb) {
+        for (int j = 1; j < MainApp.SIZE; j++) {
+            for (int i = 0; i < MainApp.SIZE - j; i++) {
+                if (MainApp.map[j + i][i] == symb) {
                     amount += 1;
-                    if (amount == Main.DOTS_TO_WIN) {
+                    if (amount == MainApp.DOTS_TO_WIN) {
                         return true;
                     }
                 }
-                if (Main.map[j + i][i] != symb) {
+                if (MainApp.map[j + i][i] != symb) {
                     if (amount > 0) {
                         return false;
                     }
@@ -138,15 +138,15 @@ public class TestWin {
     // 7    a[i,N-1-i-j]... Диагонали  вверх от диагонали "верх-право -- низ-лево"
     public static boolean testRightUpDiagonals(char symb) {
         int amount = 0;
-        for (int j = 1; j < Main.SIZE; j++) {
-            for (int i = 0; i < Main.SIZE - j; i++) {
-                if (Main.map[i][Main.SIZE - i - j - 1] == symb) {
+        for (int j = 1; j < MainApp.SIZE; j++) {
+            for (int i = 0; i < MainApp.SIZE - j; i++) {
+                if (MainApp.map[i][MainApp.SIZE - i - j - 1] == symb) {
                     amount += 1;
-                    if (amount == Main.DOTS_TO_WIN) {
+                    if (amount == MainApp.DOTS_TO_WIN) {
                         return true;
                     }
                 }
-                if (Main.map[i][Main.SIZE - i - j - 1] != symb) {
+                if (MainApp.map[i][MainApp.SIZE - i - j - 1] != symb) {
                     if (amount > 0) {
                         return false;
                     }
@@ -158,15 +158,15 @@ public class TestWin {
    // 8  a[j+i,N-1-i]... Диагонали  вниз от диагонали "верх-право -- низ-лево"
     public static boolean testRightDownDiagonals(char symb) {
         int amount = 0;
-        for (int j = 1; j < Main.SIZE; j++) {
-            for (int i = 0; i < Main.SIZE - j; i++) {
-                if (Main.map[j + i][Main.SIZE - 1 - i] == symb) {
+        for (int j = 1; j < MainApp.SIZE; j++) {
+            for (int i = 0; i < MainApp.SIZE - j; i++) {
+                if (MainApp.map[j + i][MainApp.SIZE - 1 - i] == symb) {
                     amount += 1;
-                    if (amount == Main.DOTS_TO_WIN) {
+                    if (amount == MainApp.DOTS_TO_WIN) {
                         return true;
                     }
                 }
-                if (Main.map[j + i][Main.SIZE - 1 - i] != symb) {
+                if (MainApp.map[j + i][MainApp.SIZE - 1 - i] != symb) {
                     if (amount > 0) {
                         return false;
                     }
