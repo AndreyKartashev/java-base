@@ -13,15 +13,16 @@
 */
 package ru.geekbrains.lesson7.oop;
 
-public class Main {
+public class MainClass {
 
     public static void main(String[] args) {
         // write your code here
         char[] arr = new char[]{'a', 'B', 'c', 'D', 'e'};
         String str = new String(arr);
         System.out.println("Массив символов = " + str);
-        StringBuilder sbStrPrimer = new StringBuilder(str);
-        System.out.println("Переменная стринг билдер = " + sbStrPrimer + " - вот так!");
+        StringBuilder sbStrPrimer;
+        sbStrPrimer = new StringBuilder(str);
+        System.out.println("Переменная стринг билдер = " + sbStrPrimer + " вот так!");
 
         Cat cat = new Cat("Barsik", 5);
         Cat cat2 = new Cat("Belka", 10);
@@ -35,3 +36,4 @@ public class Main {
 //        plate2.info();
     }
 }
+
