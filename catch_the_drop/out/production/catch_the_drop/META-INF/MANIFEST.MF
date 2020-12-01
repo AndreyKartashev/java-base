@@ -1,3 +1,0 @@
-Manifest-Version: 1.0
-Main-Class: ru.geekbrains.catch_the_drop.GameWindow
-
